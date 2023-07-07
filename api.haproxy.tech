@@ -1,0 +1,32 @@
+server {
+listen 80;
+listen [::]:80;
+server_name api.haproxy.tech www.api.haproxy.tech;
+return 301 https://$host$request_uri;
+}
+server {
+listen 443 ssl http2;
+listen [::]:443 ssl http2; 
+ssl_certificate /root/ssl/haproxy.tech.pem;
+ssl_certificate_key /root/ssl/haproxy.tech.key;
+ssl_protocols TLSv1.2 TLSv1.3;
+
+	server_name api.haproxy.tech;
+	
+	access_log off;
+	error_log /var/log/nginx/api.haproxy.tech.error.log;
+	
+	root /var/www/api.haproxy.tech/htdocs;
+		
+	index index.php index.html index.htm;
+	
+	include common/auth.conf;
+	
+	# WebinolyCustom
+	include apps.d/api.haproxy.tech-proxy.conf;
+	# WebinolyCustomEnd
+	
+	include /var/www/api.haproxy.tech/*-nginx.conf;
+	include /etc/nginx/conf.d/*.conf.srv;
+}
+# WebinolyNginxServerEnd
