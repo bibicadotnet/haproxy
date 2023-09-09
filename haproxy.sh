@@ -25,6 +25,9 @@ echo "*/1 * * * * curl https://haproxy.tech/wp-cron.php?doing_wp_cron > /dev/nul
 echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> simply-static
 crontab simply-static
 
+# Monitor and restart php, mysql, nginx
+sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/monitor-service-status/main/setup_monitor_service_restart.sh -O setup_monitor_service_restart.sh && sudo chmod +x setup_monitor_service_restart.sh && sudo ./setup_monitor_service_restart.sh
+
 # tao 2 trang haproxy.tech và api.haproxy.tech
 sudo site haproxy.tech -wp
 sudo site api.haproxy.tech -proxy=[https://res.cloudinary.com/haproxy-tech/images/] -dedicated-reverse-proxy=simple
