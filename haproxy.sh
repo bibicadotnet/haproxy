@@ -1,6 +1,6 @@
 #!/bin/bash
 # setup Webinoly php 7.4
-sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/Oracle-VM-Standard-A1-Flex-Webinoly/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo ./setup.sh
+sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/Webinoly-Optimization/master/webinoly74.sh -O webinoly_mod.sh && sudo chmod +x webinoly_mod.sh && sudo ./webinoly_mod.sh
 
 # setup wp-cli
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -31,6 +31,7 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/
 # tao 2 trang haproxy.tech và api.haproxy.tech
 sudo site haproxy.tech -wp
 sudo site api.haproxy.tech -proxy=[https://res.cloudinary.com/haproxy-tech/] -dedicated-reverse-proxy=simple
+sudo site api.haproxy.tech -cache=custom
 
 # setup ssl
 mkdir -p /root/ssl
