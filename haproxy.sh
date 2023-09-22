@@ -30,7 +30,7 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/
 
 # tao 2 trang haproxy.tech và api.haproxy.tech
 sudo site haproxy.tech -wp
-sudo site api.haproxy.tech -proxy=[https://res.cloudinary.com/haproxy-tech/images/] -dedicated-reverse-proxy=simple
+sudo site api.haproxy.tech -proxy=[https://res.cloudinary.com/haproxy-tech/] -dedicated-reverse-proxy=simple
 
 # setup ssl
 mkdir -p /root/ssl
