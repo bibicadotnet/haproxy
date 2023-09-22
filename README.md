@@ -1,4 +1,4 @@
-# Oracle 24GB RAM cho haproxy.tech, api.haproxy.tech
+# Oracle VM.Standard.E2.1.Micro cho haproxy.tech, api.haproxy.tech
 Cập nhập OS và khởi động lại hệ thống
 ```shell
 sudo apt update && sudo apt upgrade -y && sudo reboot
