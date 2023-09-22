@@ -13,13 +13,6 @@ ssl_certificate_key /root/ssl/haproxy.tech.key;
 ssl_protocols TLSv1.2 TLSv1.3;
 
     server_name haproxy.tech;
-
-sub_filter_once off;
-sub_filter_last_modified on;
-sub_filter 'src="https://res.cloudinary.com/haproxy-tech/images/' 'src="https://api.haproxy.tech/';
-sub_filter '<a href="https://res.cloudinary.com/haproxy-tech/images/' '<a href="https://api.haproxy.tech/';
-sub_filter 'srcset="https://res.cloudinary.com/haproxy-tech/images/' 'srcset="https://api.haproxy.tech/';
-sub_filter '?_i=AA' '';
     
     access_log off;
     error_log /var/log/nginx/haproxy.tech.error.log;
