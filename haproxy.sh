@@ -12,17 +12,17 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 
 # Bypass Oracle VM.Standard.A1.Flex
-sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/NeverIdle-Oracle/master/VM.Standard.A1.Flex.4GB.RAM.sh -O /usr/local/bin/bypass_oracle.sh
-chmod +x /usr/local/bin/bypass_oracle.sh
-nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
+#sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/NeverIdle-Oracle/master/VM.Standard.A1.Flex.4GB.RAM.sh -O /usr/local/bin/bypass_oracle.sh
+#chmod +x /usr/local/bin/bypass_oracle.sh
+#nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 
 # setup crontab cho wp_cron and simply-static
-mkdir -p /var/www/haproxy.tech/static-files-temp
-chmod 777 /var/www/haproxy.tech/static-files-temp
+#mkdir -p /var/www/haproxy.tech/static-files-temp
+#chmod 777 /var/www/haproxy.tech/static-files-temp
 crontab -l > simply-static
 echo "0 3 * * * /usr/local/bin/wp --path='/var/www/haproxy.tech/htdocs' simply-static run --allow-root" >> simply-static
 echo "*/1 * * * * curl https://haproxy.tech/wp-cron.php?doing_wp_cron > /dev/null 2>&1" >> simply-static
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> simply-static
+#echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> simply-static
 crontab simply-static
 
 # Monitor and restart php, mysql, nginx
